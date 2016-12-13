@@ -1394,7 +1394,7 @@
             htmlData = $cell.html();
 
           if (htmlData != '') {
-            var html = $.parseHTML( htmlData );
+            var html = $.parseHTML( htmlData + '' );
 
             htmlData = '';
             $.each( html, function() {
@@ -1403,7 +1403,7 @@
               else if ( $(this).is("select") )
                 htmlData += $cell.find('select option:selected').text();
               else {
-                htmlData += $cell.html();
+                htmlData += $cell.data("tableexport-value") || $cell.html();
                 return false;
               }
             });
